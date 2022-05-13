@@ -11,3 +11,6 @@ A ideia é fazer o desenvolvimento de um script em python que detecta a carta co
 
 ![Cartas](baralho.png)
 
+## Aluno
+  Vinicius Scarabelli - rm83308
+
