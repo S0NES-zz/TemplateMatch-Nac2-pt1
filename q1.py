@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-template = cv2.imread("7paus.png", cv2.IMREAD_GRAYSCALE)
+template = cv2.imread("7ouro.png", cv2.IMREAD_GRAYSCALE)
 w, h = template.shape[::-1]
 
 cap = cv2.VideoCapture("q1.mp4")
@@ -22,7 +22,7 @@ while True:
     upper_red = np.array([180, 255, 243])
 
     mask = cv2.inRange(hsv, lower_red, upper_red)
-    mask = cv2.erode(mask, np.ones((5, 6), np.uint8))
+    mask = cv2.erode(mask, np.ones((8, 8), np.uint8))
 
     contours, _ = cv2.findContours(
         mask, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
@@ -33,7 +33,7 @@ while True:
         x = approx.ravel()[0]
         y = approx.ravel()[1]
 
-        cv2.drawContours(frame, [approx], 0, (0, 205, 15), 5)
+        cv2.drawContours(resize, [approx], 0, (0, 205, 15), 5)
 
     for pt in zip(*loc[::-1]):
         cv2.rectangle(resize, pt, (pt[0] + w, pt[1] + h), (200, 255, 0), 1)
